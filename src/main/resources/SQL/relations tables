@@ -1,0 +1,44 @@
+create table carts_needs
+(
+    cartId int null,
+    needId int not null,
+    constraint carts_needs___fk
+        foreign key (cartId) references carts (id),
+    constraint carts_needs_carts__fk
+        foreign key (needId) references carts (id)
+);
+
+
+create table participants_carts
+(
+    participantId int not null,
+    cartId        int not null,
+    constraint participants_carts___fk
+        foreign key (participantId) references participants (id),
+    constraint participants_carts___fk2
+        foreign key (cartId) references carts (id)
+);
+
+
+create table parties_needs
+(
+    partyId int not null,
+    needId  int not null,
+    constraint parties_needs___fk
+        foreign key (partyId) references party (id),
+    constraint parties_needs___fk2
+        foreign key (needId) references needs (id)
+);
+
+
+create table parties_participants
+(
+    partyId       int not null,
+    participantId int not null,
+    constraint parties_participants___fk
+        foreign key (participantId) references participants (id),
+    constraint parties_participants___fk2
+        foreign key (partyId) references party (id)
+);
+
+
